@@ -1,9 +1,10 @@
-{% embed '_layouts/embeds/content-xl.twig' %}
+{% embed '_layouts/embeds/content-md.twig' with {alignTitle: 'left'} %}
     {% block content %}
         {# Require that a user is logged in to view this form. #}
         {% requireLogin %}
 
-        {{ sprig.script }}
+        {# Load js script for Sprig/HTMX #}
+{% js craft.app.config.custom.htmxScriptUrl %}
 
         {{ sprig('@members/_components/edit-profile-form.twig') }}
     {% endblock %}

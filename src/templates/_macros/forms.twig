@@ -48,6 +48,7 @@
         <label for="{{ name|id }}"
                class="block text-base font-semibold text-foreground dark:text-foreground-dark">{{ 'Upload a new photo'|t('members') }}</label>
         <div class="mt-4">
+
             {{ input('file', name, null, {
                 id: 'name|id',
                 class: 'block w-full text-base text-foreground
@@ -56,7 +57,8 @@
                           file:text-base
                           file:bg-primary file:text-white
                           file:cursor-pointer
-                          hover:file:bg-black dark:hover:file:bg-foreground-dark hover:file:text-white dark:hover:file:text-background-dark file:transition',
+                          dark:file:bg-primary-dark dark:file:text-black
+                          hover:file:bg-secondary dark:hover:file:bg-secondary hover:file:text-white dark:hover:file:text-white file:transition',
                 accept: accept,
             }) }}
         </div>

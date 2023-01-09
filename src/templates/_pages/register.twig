@@ -3,7 +3,8 @@
 
 {% embed '_layouts/embeds/content-md.twig' with {alignTitle: 'left'} %}
     {% block content %}
-        {{ sprig.script }}
+        {# Load js script for Sprig/HTMX #}
+{% js craft.app.config.custom.htmxScriptUrl %}
 
         <div>
             {{ sprig('@members/_components/register-form') }}

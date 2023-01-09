@@ -90,6 +90,10 @@ Add to `config/general.php`:
 
 Run `craft members/seed`
 
+## Notification Emails
+
+Better matching texts for notification emails are prepared in  `./vendor/wsydney76/craft-members/translations`. Copy them to the `translations` folder of your project.
+
 ## CSS
 
 Add to `content` in `tailwind.config.js`:
