@@ -1,0 +1,42 @@
+{# Full page request #}
+
+
+{% set notice = craft.app.session.flash('notice') %}
+{% if notice %}
+    {% include members('_includes/message.twig') with {
+        type: 'notice',
+        message: successMessage ?? notice
+    } only %}
+{% endif %}
+
+{% set error = craft.app.session.flash('error') %}
+{% if error %}
+    {% include members('_includes/message.twig') with {
+        type: 'error',
+        message: errorMessage ?? error
+    } only %}
+{% endif %}
+
+{# Ajax request via Sprig #}
+
+
+{% if success is defined and success %}
+    {% include members('_includes/message.twig') with {
+        type: 'notice',
+        message: successMessage
+    } only %}
+{% endif %}
+
+
+{% if user is defined and user and user.errors %}
+    {% include members('_includes/message.twig') with {
+        type: 'error',
+        message: errorMessage ?? user.firstErrors|join(', ')
+    } only %}
+{% elseif errors is defined %}
+    {% include members('_includes/message.twig') with {
+        type: 'error',
+        message: errorMessage ?? errors|join(', ')
+    } only %}
+{% endif %}
+

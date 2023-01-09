@@ -3,4 +3,10 @@
 
 {% import '_includes/forms.twig' as forms %}
 
-{# ... #}
+{{ forms.textField({
+    'label': 'Member Template',
+    'name': 'memberTemplate',
+    'value': settings.memberTemplate,
+    'instructions': 'Load this template on the Members page',
+    'tip': '@members/_pages/member.twig is a placeholder'
+}) }}

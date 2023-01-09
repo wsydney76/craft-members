@@ -1,0 +1,7 @@
+{% embed '_layouts/embeds/content-md.twig' with {alignTitle: 'left'} %}
+    {% block content %}
+        <div class="font-bold text-xl text-warning mt-16">
+            {{ 'This code is expired or invalid.'|t('members') }}
+        </div>
+    {% endblock %}
+{% endembed %}

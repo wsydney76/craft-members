@@ -5,7 +5,12 @@ namespace wsydney76\members;
 use Craft;
 use craft\base\Model;
 use craft\base\Plugin as BasePlugin;
+use craft\events\RegisterTemplateRootsEvent;
+use craft\helpers\App;
+use craft\web\View;
 use wsydney76\members\models\Settings;
+use wsydney76\members\twigextensions\TwigExtension;
+use yii\base\Event;
 
 /**
  * Members plugin
@@ -39,6 +44,7 @@ class Plugin extends BasePlugin
             $this->attachEventHandlers();
             // ...
         });
+        Craft::$app->view->registerTwigExtension(new TwigExtension());
     }
 
     protected function createSettingsModel(): ?Model
@@ -58,5 +64,20 @@ class Plugin extends BasePlugin
     {
         // Register event handlers here ...
         // (see https://craftcms.com/docs/4.x/extend/events.html to get started)
+
+        Event::on(
+            View::class,
+            View::EVENT_REGISTER_SITE_TEMPLATE_ROOTS,
+            function(RegisterTemplateRootsEvent $event) {
+//                $templateRoot = $this->settings->templateRoot ?
+//                    App::parseEnv('@templates/' . $this->settings->templateRoot) :
+//                    $this->getBasePath() . '/templates';
+
+                $templateRoot = $this->getBasePath() . '/templates';
+
+                $event->roots['@members'] = $templateRoot;
+            }
+        );
+
     }
 }

@@ -1,0 +1,11 @@
+{% embed '_layouts/embeds/content-xl.twig' %}
+    {% block content %}
+        {# Require that a user is logged in to view this form. #}
+        {% requireLogin %}
+
+        {{ sprig.script }}
+
+        {{ sprig('@members/_components/edit-profile-form.twig') }}
+    {% endblock %}
+{% endembed %}
+

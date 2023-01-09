@@ -1,0 +1,13 @@
+
+{% if currentUser %} {% redirect "/" %} {% endif %}
+
+{% embed '_layouts/embeds/content-md.twig' with {alignTitle: 'left'} %}
+    {% block content %}
+        {{ sprig.script }}
+
+        <div>
+            {{ sprig('@members/_components/register-form') }}
+        </div>
+    {% endblock %}
+{% endembed %}
+

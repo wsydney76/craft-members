@@ -1,0 +1,74 @@
+{% embed '_layouts/embeds/content-md.twig' with {alignTitle: 'left'} %}
+    {% block content %}
+        {% if currentUser %}
+            {% redirect "/" %}
+        {% endif %}
+
+        {% set user = user ?? null %}
+
+        {% embed members('_includes/form.twig') with {action: 'users/login'} %}
+            {% block content %}
+
+               {% import '@members/_macros/forms.twig' as forms %}
+
+                {% if errorMessage is defined %}
+                    {% include members('_includes/message.twig') with {
+                        type: 'error',
+                        message: errorMessage
+                    } only %}
+                {% endif %}
+
+
+                {{ forms.textField({
+                    user: user,
+                    label: craft.app.config.general.useEmailAsUsername ? 'Email'|t('members') : 'Username or Email'|t('members'),
+                    name: 'loginName',
+                    value: user.email ??  craft.app.user.rememberedUsername ?? '',
+                    required: true,
+                }) }}
+
+                {{ forms.textField({
+                    user: user,
+                    label: 'Password'|t('members'),
+                    type: 'password',
+                    name: 'password',
+                    required: true
+                }) }}
+
+                {{ forms.checkbox({
+                    label: 'Remember me'|t('members'),
+                    name: 'rememberMe',
+                    value: 1
+                }) }}
+
+
+                {% set membersEntry = craft.entries.pageTemplate('@members/_pages/forgotpassword.twig') %}
+
+                <div class="flex items-center justify-between">
+                    {% set membersEntry = craft.entries.pageTemplate('@members/_pages/forgotpassword.twig').one %}
+                    {% if membersEntry %}
+                        <div class="text-sm">
+                            {{ membersEntry.link }}
+                        </div>
+                    {% endif %}
+                    {% set membersEntry = craft.entries.pageTemplate('@members/_pages/register.twig').one %}
+                    {% if membersEntry %}
+                        <div class="text-sm">
+                            <a href="{{ url('members/register') }}">
+                                {{ membersEntry.link }}
+                            </a>
+                        </div>
+                    {% endif %}
+                </div>
+
+
+                <div>
+                    {{ forms.button('Login'|t('members'), true) }}
+                </div>
+
+            {% endblock %}
+        {% endembed %}
+
+
+    {% endblock %}
+{% endembed %}
