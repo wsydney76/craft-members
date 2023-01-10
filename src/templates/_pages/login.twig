@@ -1,8 +1,7 @@
+{% requireGuest %}
+
 {% embed '_layouts/embeds/content-md.twig' %}
     {% block content %}
-        {% if currentUser %}
-            {% redirect "/" %}
-        {% endif %}
 
         {% set user = user ?? null %}
 
@@ -51,14 +50,21 @@
                             {{ membersEntry.link }}
                         </div>
                     {% endif %}
-                    {% set membersEntry = craft.entries.pageTemplate('@members/_pages/register.twig').one %}
-                    {% if membersEntry %}
-                        <div class="text-sm">
-                            <a href="{{ url('members/register') }}">
-                                {{ membersEntry.link }}
-                            </a>
-                        </div>
+
+
+
+                    {% if craft.app.projectConfig.get('users')['allowPublicRegistration'] ?? true %}
+                        {% set membersEntry = craft.entries.pageTemplate('@members/_pages/register.twig').one %}
+                        {% if membersEntry %}
+                            <div class="text-sm">
+                                <a href="{{ url('members/register') }}">
+                                    {{ membersEntry.link }}
+                                </a>
+                            </div>
+                        {% endif %}
                     {% endif %}
+                    
+
                 </div>
 
 

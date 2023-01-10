@@ -5,8 +5,12 @@
 
         {% import '@members/_macros/forms.twig' as forms %}
 
+        {% set deactivateByDefault = craft.app.projectConfig.get('users')['deactivateByDefault'] ?? false %}
+
         {% include members('_includes/flash.twig') with {
-            successMessage: 'We created your account! Please check your email to verify your email address.'|t('members'),
+            successMessage: deactivateByDefault ?
+            'We received your request and will check it soon!. You will be notified when it is approved.'|t('members') :
+            'We created your account! Please check your email to verify your email address.'|t('members'),
             errorMessage: 'Profile could not be created'|t('members')
         } %}
 

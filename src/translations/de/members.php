@@ -32,4 +32,5 @@ return [
     'We created your account! Please check your email to verify your email address.' => 'Wir haben Ihr Konto erstellt! Bitte überprüfen Sie Ihre E-Mail, um Ihre E-Mail-Adresse zu bestätigen.',
     'Profile successfully saved' => 'Profil erfolgreich gespeichert',
     'Placeholder for members content' => 'Platzhalter für Mitgliederinhalte',
+    'We received your request and will check it soon!. You will be notified when it is approved.' => 'Wir haben Ihren Anfrage erhalten und werden sie sofort prüfen. Sie werden benachrichtigt, sobald ihr Profil freigeschaltet ist.',
 ];
