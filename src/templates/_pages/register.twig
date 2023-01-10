@@ -1,7 +1,7 @@
 
 {% if currentUser %} {% redirect "/" %} {% endif %}
 
-{% embed '_layouts/embeds/content-md.twig' with {alignTitle: 'left'} %}
+{% embed '_layouts/embeds/content-md.twig' %}
     {% block content %}
         {# Load js script for Sprig/HTMX #}
 {% js craft.app.config.custom.htmxScriptUrl %}
