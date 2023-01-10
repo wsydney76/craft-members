@@ -8,7 +8,7 @@
         {% embed members('_includes/form.twig') with {action: 'users/login'} %}
             {% block content %}
 
-               {% import '@members/_macros/forms.twig' as forms %}
+                {% import '@members/_macros/forms.twig' as forms %}
 
                 {% if errorMessage is defined %}
                     {% include members('_includes/message.twig') with {
@@ -57,13 +57,11 @@
                         {% set membersEntry = craft.entries.pageTemplate('@members/_pages/register.twig').one %}
                         {% if membersEntry %}
                             <div class="text-sm">
-                                <a href="{{ url('members/register') }}">
-                                    {{ membersEntry.link }}
-                                </a>
+                                {{ membersEntry.link }}
                             </div>
                         {% endif %}
                     {% endif %}
-                    
+
 
                 </div>
 
