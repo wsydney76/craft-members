@@ -65,19 +65,22 @@
             }) }}
         </div>
 
+        {% set showUsername = not craft.app.config.general.useEmailAsUsername  %}
 
-        <div class="md:flex md:space-x-4">
-            <div class="md:w-1/2">
-                {% if not craft.app.config.general.useEmailAsUsername %}
-                    {{ forms.textField({
-                        user: user,
-                        label: 'Username'|t('members'),
-                        name: 'username',
-                        required: true
-                    }) }}
-                {% endif %}
-            </div>
-            <div class="md:w-1/2">
+        <div class="{{ showUsername ? 'md:flex md:space-x-4' }}">
+            {% if showUsername %}
+                <div class="md:w-1/2">
+                    {% if not craft.app.config.general.useEmailAsUsername %}
+                        {{ forms.textField({
+                            user: user,
+                            label: 'Username'|t('members'),
+                            name: 'username',
+                            required: true
+                        }) }}
+                    {% endif %}
+                </div>
+            {% endif %}
+            <div class="{{ showUsername ? 'md:w-1/2'}}">
                 {{ forms.textField({
                     user: user,
                     label: 'Email'|t('members'),

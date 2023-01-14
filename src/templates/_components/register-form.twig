@@ -26,8 +26,10 @@
                 </div>
             </div>
 
-            <div class="md:flex md:space-x-8">
-                <div class="md:w-1/2">
+            {% set showPassword = not craft.app.config.general.deferPublicRegistrationPassword %}
+
+            <div class="{{ showPassword ? 'md:flex md:space-x-8' }}">
+                <div class="{{ showPassword ? 'md:w-1/2' }}">
                     {{ forms.textField({
                         user: user,
                         label: 'Email'|t('members'),
@@ -36,15 +38,17 @@
                         required: true
                     }) }}
                 </div>
-                <div class="md:w-1/2">
-                    {{ forms.textField({
-                        user: user,
-                        label: 'Password'|t('members'),
-                        name: 'password',
-                        required: true,
-                        type: 'password'
-                    }) }}
-                </div>
+                {% if showPassword %}
+                    <div class="md:w-1/2">
+                        {{ forms.textField({
+                            user: user,
+                            label: 'Password'|t('members'),
+                            name: 'password',
+                            required: true,
+                            type: 'password'
+                        }) }}
+                    </div>
+                {% endif %}
             </div>
 
 
