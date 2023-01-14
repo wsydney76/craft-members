@@ -64,9 +64,6 @@ Add to `config/general.php`:
     'en' => 'members/set-password',
 ])
 
-// Whether users should automatically be logged in after activating their account or resetting their password.
-->autoLoginAfterAccountActivation(true)
-
 // The URI that users without access to the control panel should be redirected to after activating their account.
 ->activateAccountSuccessPath([
     'de' => 'mitglieder',
@@ -78,6 +75,20 @@ Add to `config/general.php`:
     'de' => 'mitglieder/ungueltig',
     'en' => 'members/invalid',
 ])
+```
+
+Other recommended settings: 
+
+```php
+// Whether Craft should set users’ usernames to their email addresses, rather than let them set their username separately.
+->useEmailAsUsername(false)
+
+// By default, Craft requires a front-end “password” field for public user registrations.
+// Setting this to true removes that requirement for the initial registration form.
+->deferPublicRegistrationPassword(true)
+
+// Whether users should automatically be logged in after activating their account or resetting their password.
+->autoLoginAfterAccountActivation(true)
 ```
 
 ## Settings
