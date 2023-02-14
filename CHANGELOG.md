@@ -1,4 +1,5 @@
 # Release Notes for Members
 
 ## 1.0.0
-- Initial release
+- Initial release 
+- PoC quality

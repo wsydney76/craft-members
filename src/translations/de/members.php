@@ -3,6 +3,7 @@
 return [
     'A new email address needs to be verified.' => 'Eine neue E-Mail-Adresse muss verifiziert werden.',
     'Access the site with your account' => 'Zugriff auf die Website mit Ihrem Konto',
+    'Access the site' => 'Zur Website',
     'Current Password' => 'Aktuelles Passwort',
     'Delete photo' => 'Foto löschen',
     'Email' => 'E-Mail',

@@ -38,16 +38,16 @@ cd /path/to/my-project.test
 composer require wsydney76/craft-members
 
 # tell Craft to install the plugin
-./craft plugin/install members
+craft plugin/install members
 ```
 
 ## Prepare
 
 Tbd.
 
-Currently, this plugin assumes that there are two sites: `en` and `de`, with `en` as primary site.
+Currently, this plugin assumes that there are two sites: `en` and `de`.
 
-This is the case with a fresh install of the starter.
+This is the case with a fresh installation of the starter.
 
 Add to `config/general.php`:
 
